@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fashion Store - Bill Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">FASHION STORE</div>
+    <nav>
+      <a href="#">New In</a>
+      <a href="#">Women</a>
+      <a href="#">Men</a>
+      <a href="#">Sale</a>
+    </nav>
+    <div class="cart-icon" onclick="openCart()">
+      🛒<span id="cart-count">0</span>
+    </div>
+  </header>
+  <section class="hero">
+    <h1>Bill Generator</h1>
+    <p>Select items and generate professional invoices</p>
+  </section>
+  <section class="products-section">
+    <input type="text" id="search" placeholder="Search items...">
+    <select id="category-filter">
+      <option value="all">All Categories</option>
+      <option value="shirts">Shirts</option>
+      <option value="jackets">Jackets</option>
+      <option value="jeans">Jeans</option>
+      <option value="sweaters">Sweaters</option>
+    </select>
+    <div id="products" class="products"></div>
+  </section>
+
+  <!-- Cart Modal -->
+  <div id="cart-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeCart()">&times;</span>
+      <h2>Shopping Cart (<span id="cart-items-count">0</span> items)</h2>
+      <div id="cart-items"></div>
+      <div class="cart-summary">
+        <div>Subtotal: $<span id="subtotal">0.00</span></div>
+        <div>Tax (10%): $<span id="tax">0.00</span></div>
+        <div class="total">Total: $<span id="total">0.00</span></div>
+      </div>
+      <button onclick="generateInvoice()">Generate & Print Invoice</button>
+    </div>
+  </div>
+
+  <!-- Invoice Modal -->
+  <div id="invoice-modal" class="modal">
+    <div class="modal-content invoice">
+      <span class="close" onclick="closeInvoice()">&times;</span>
+      <button onclick="window.print()">Print</button>
+      <h2>Invoice Preview</h2>
+      <div class="invoice-header">
+        <h1>FASHION STORE</h1>
+        <p>Premium Clothing & Accessories<br>123 Fashion Street, Style City, SC 12345</p>
+      </div>
+      <div class="invoice-details">
+        <div>
+          <strong>Invoice #:</strong> <span id="invoice-number"></span><br>
+          <strong>Date:</strong> <span id="invoice-date"></span>
+        </div>
+        <div>
+          <strong>Bill To</strong><br>
+          Customer<br>
+          Fashion Store Customer
+        </div>
+      </div>
+      <table id="invoice-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="cart-summary">
+        <div>Subtotal: $<span id="invoice-subtotal">0.00</span></div>
+        <div>Tax (10%): $<span id="invoice-tax">0.00</span></div>
+        <div class="total">Total: $<span id="invoice-total">0.00</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
